@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Working Clock</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+            font-family:"Poppins",sans-serif;
+
+        }
+        body{
+            height:100vh;
+            background:linear-gradient(135deg,#8052ec,#d161ff);
+        }
+
+        .clock{
+            width:31.25em;
+            height:8em;
+            position:absolute;
+            transform:translate(-50%,-50%);
+            top:50%;
+            left:50%;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            font-weight:900;
+            color:#ffffff;
+        }
+
+        
+        .clock div{
+            position:relative;
+            background-color:#ffffff;
+            height:100%;
+            width:3.2em;
+            color:black;
+            display:flex;
+            font-size:2.5em;
+            align-items:center;
+            justify-content:center;
+            border-radius: 1em;
+            box-shadow:2px 4px 4px 5px rgba(#000000);
+            letter-spacing:0.05em;
+        }
+
+        .clock span{
+            font-weight:800;
+            font-size:2.5em;
+            
+        }
+
+         #time{
+            position:relative;
+            transform:translate(200%,100%);
+            width:200px;
+            height:100px;
+            margin-top:30px;
+            
+            
+
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        
+      <div class="clock">
+        <div id="time">00</div>
+        <div id="hour">00</div>
+        <span>:</span>
+        <div id="minute">00</div>
+        <span>:</span>
+        <div id="seconds">00</div>
+
+    </div>
+    <script>
+        var hour = document.getElementById("hour");
+        var minute = document.getElementById("minute");
+        var seconds = document.getElementById("seconds")
+        var time = document.getElementById("time");
+        
+        const clock = setInterval(()=>{
+            const dateTime = new Date();
+            let hr = dateTime.getHours();
+            let min = dateTime.getMinutes();
+            let sec = dateTime.getSeconds();
+
+            hr=hr.toString().padStart(2,"0");
+            min=min.toString().padStart(2,"0");
+            sec=sec.toString().padStart(2,"0");
+            
+            if(hr > 12&&hr<16){
+                time.innerText="afternoon"
+            }
+            if(hr>16){
+                time.innerText="Evening"
+            }
+
+            
+
+            hour.textContent = hr;
+            minute.textContent = min;
+            seconds.textContent =sec;
+        },1000)
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- const hour =document.getElementById("hour")
+const minute = document.getElementById("minute")
+const seconds = document.getElementById("seconds")
+
+const clock = setInterval(()=>{
+    const realtime = new Date();
+    let hr = realtime.getHours()
+   let  min = realtime.getMinutes()
+   let  sec = realtime.getSeconds()
+
+    hr = hr.toString().padStart(2,"0")
+    min = min.toString().padStart(2,"0")
+    sec = sec.toString().padStart(2,"0")
+
+    // const dateNow = new Date();
+    // let hr = dateNow.getHours();
+    // let min = dateNow.getMinutes();
+    // let sec = dateNow.getSeconds()
+    
+    
+    // hr =hr.toString().padStart(2,"0");
+    // min=min.toString().padStart(2,"0");
+    // sec = sec.toString().padStart(2,"0");
+
+    
+
+    // const timeString = `${hr}:${min}:${sec}`
+     
+    minute.textContent = min;
+    seconds.textContent=sec
+    
+},1000); -->
